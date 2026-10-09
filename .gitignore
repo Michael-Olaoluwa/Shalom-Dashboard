@@ -1,0 +1,41 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Secrets. VITE_* values are baked into the public bundle, so only ever put the
+# anon key in there. The service role key lives in .env.import, and the Edge
+# Function secrets are set with `supabase secrets set`.
+.env
+.env.*
+!.env.example
+
+# Supabase CLI
+supabase/.branches
+supabase/.temp
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Import spreadsheets. These hold real members' names, phone numbers, emails
+# and addresses, so they must never be committed.
+*.xlsx
+*.xls
+*.csv
