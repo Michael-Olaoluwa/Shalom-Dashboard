@@ -56,8 +56,15 @@ export default function PublicDashboard() {
       <Link to="/admin" className="corner-link">Admin</Link>
 
       <header className="hero">
+        <p className="hero__eyebrow">Celebrations at Shalom</p>
         <h1 className="hero__date">{formatToday(today)}</h1>
-        <p className="hero__sub">Celebrations at Shalom</p>
+        <p className="hero__sub">
+          {todayEntries.length > 0
+            ? `${todayEntries.length} celebration${todayEntries.length === 1 ? '' : 's'} to rejoice in today`
+            : 'A day to celebrate family, fellowship and faith'}
+        </p>
+        <span className="hero__orb hero__orb--one" aria-hidden="true" />
+        <span className="hero__orb hero__orb--two" aria-hidden="true" />
       </header>
 
       <p className="year-link">
@@ -99,6 +106,7 @@ export default function PublicDashboard() {
                 title="Upcoming anniversaries"
                 events={anniversaries.upcoming}
                 emptyText="No anniversaries in the next few weeks."
+                tone="anniversary"
               />
             </div>
           )}

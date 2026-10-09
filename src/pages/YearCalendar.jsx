@@ -86,8 +86,11 @@ export default function YearCalendar() {
       <Link to="/" className="corner-link">Home</Link>
 
       <header className="hero hero--compact">
+        <p className="hero__eyebrow">Shalom celebrations</p>
         <h1 className="hero__date">Celebrations calendar</h1>
         <p className="hero__sub">Every birthday and anniversary, by month</p>
+        <span className="hero__orb hero__orb--one" aria-hidden="true" />
+        <span className="hero__orb hero__orb--two" aria-hidden="true" />
       </header>
 
       <div className="cal-nav">

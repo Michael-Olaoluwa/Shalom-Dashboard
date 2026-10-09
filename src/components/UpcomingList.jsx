@@ -5,9 +5,10 @@ import { formatShort, relativeDays } from '../lib/dates'
  * "Upcoming birthdays" / "Upcoming anniversaries" list.
  * Entries already shown in the Today section are not repeated here.
  */
-export default function UpcomingList({ title, events, emptyText }) {
+export default function UpcomingList({ title, events, emptyText, tone }) {
+  const classes = `panel${tone ? ` panel--${tone}` : ''}`
   return (
-    <section className="panel">
+    <section className={classes}>
       <h2 className="panel__title">{title}</h2>
 
       {events.length === 0 ? (
