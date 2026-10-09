@@ -55,11 +55,26 @@ h1, h2, h3 {
 
 /* ---------- layout ---------- */
 
+/* The church logo, huge and faint, behind every page. Sits below .page so
+   content and cards read cleanly on top of it. */
+.watermark {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url('/Rccg_logo.png');
+  background-repeat: no-repeat;
+  background-position: center 42%;
+  background-size: min(80vmin, 46rem) auto;
+  opacity: 0.07;
+}
+
 .page {
+  position: relative;
+  z-index: 1;
   max-width: 1000px;
   margin: 0 auto;
   padding: 2rem 1.25rem 4rem;
-  position: relative;
 }
 
 .page--narrow { max-width: 600px; }

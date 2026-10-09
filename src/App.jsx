@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import { AdminSessionProvider, useAdminSession } from './lib/adminSession'
 import PublicDashboard from './pages/PublicDashboard'
 import LoadingScreen from './components/LoadingScreen'
+import Watermark from './components/Watermark'
 
 // The public page is what every visitor loads, so the admin screens are
 // code-split out of the initial bundle. Nothing but the unlock box should cost
@@ -22,6 +23,7 @@ function AdminRoute() {
 export default function App() {
   return (
     <AdminSessionProvider>
+      <Watermark />
       <Suspense fallback={<p className="page loading">Loading…</p>}>
         <LoadingScreen />
         <Routes>
