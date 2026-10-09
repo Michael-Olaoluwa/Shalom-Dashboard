@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import { supabase } from '../lib/supabaseClient'
 import { buildCelebrationsForYear, groupByMonth } from '../lib/dates'
 import TopBar from '../components/TopBar'
+import SiteFooter from '../components/SiteFooter'
 
 const MONTHS = [
   'January', 'February', 'March', 'April', 'May', 'June',
@@ -133,14 +134,10 @@ export default function YearCalendar() {
               <Link to="/signup">Add your details here.</Link>
             </div>
           )}
-
-          <footer className="page__footer">
-            <Link to="/signup" className="footer-cta">
-              Join / update your info
-            </Link>
-          </footer>
         </>
       )}
+
+      <SiteFooter cta={{ to: '/signup', label: 'Join / update your info' }} />
     </div>
   )
 }

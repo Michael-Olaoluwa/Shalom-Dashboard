@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { submitSignup } from '../lib/api'
 import MemberForm from '../components/MemberForm'
 import TopBar from '../components/TopBar'
+import SiteFooter from '../components/SiteFooter'
 
 export default function SignupForm() {
   const [busy, setBusy] = useState(false)
@@ -40,6 +41,7 @@ export default function SignupForm() {
           </p>
           <Link to="/" className="btn btn--primary">Back to celebrations</Link>
         </div>
+        <SiteFooter />
       </div>
     )
   }
@@ -71,6 +73,7 @@ export default function SignupForm() {
           same name and the church admin will tidy it up.
         </p>
       </div>
+      <SiteFooter />
     </div>
   )
 }

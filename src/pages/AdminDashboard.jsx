@@ -9,6 +9,8 @@ import {
 import { useAdminSession } from '../lib/adminSession'
 import { formatShort } from '../lib/dates'
 import MemberForm from '../components/MemberForm'
+import TopBar from '../components/TopBar'
+import SiteFooter from '../components/SiteFooter'
 import { Link } from 'react-router-dom'
 
 function dateLabel(day, month) {
@@ -51,6 +53,7 @@ export default function AdminDashboard() {
   if (!codeIsCurrent) {
     return (
       <div className="page page--narrow">
+        <TopBar backTo="/" backLabel="Home" right={null} />
         <div className="card">
           <h1>Code changed</h1>
           <p className="muted">
@@ -64,6 +67,7 @@ export default function AdminDashboard() {
             Unlock again
           </button>
         </div>
+        <SiteFooter />
       </div>
     )
   }
@@ -263,6 +267,8 @@ export default function AdminDashboard() {
       </section>
 
       <ChangeCodeSection onChanged={replaceCode} onStale={markCodeStale} />
+
+      <SiteFooter />
     </div>
   )
 }

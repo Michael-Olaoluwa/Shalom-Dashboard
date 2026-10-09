@@ -5,6 +5,7 @@ import { buildCelebrations, formatToday, partition } from '../lib/dates'
 import EventCard from '../components/EventCard'
 import UpcomingList, { NoMembersYet } from '../components/UpcomingList'
 import TopBar from '../components/TopBar'
+import SiteFooter from '../components/SiteFooter'
 
 // The ONLY direct table access in the whole app. `public_celebrations` has no
 // phone column and no non-consented rows, so this is safe to run as `anon`.
@@ -111,14 +112,10 @@ export default function PublicDashboard() {
               />
             </div>
           )}
-
-          <footer className="page__footer">
-            <Link to="/signup" className="footer-cta">
-              Join / update your info
-            </Link>
-          </footer>
         </>
       )}
+
+      <SiteFooter cta={{ to: '/signup', label: 'Join / update your info' }} />
     </div>
   )
 }

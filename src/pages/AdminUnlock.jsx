@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { checkAdminCode } from '../lib/api'
 import { useAdminSession } from '../lib/adminSession'
 import TopBar from '../components/TopBar'
+import SiteFooter from '../components/SiteFooter'
 
 export default function AdminUnlock() {
   const { signIn, wasSignedIn } = useAdminSession()
@@ -82,6 +83,7 @@ export default function AdminUnlock() {
           ask for it again. That's expected.
         </p>
       </div>
+      <SiteFooter />
     </div>
   )
 }
