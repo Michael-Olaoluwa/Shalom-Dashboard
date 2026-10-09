@@ -513,7 +513,7 @@ if (dryRun) {
 }
 
 if (!assumeYes) {
-  const readline = await import('node:readline/promisify')
+  const readline = await import('node:readline/promises')
   const rl = readline.createInterface({ input: process.stdin, output: process.stdout })
   const answer = await rl.question('Proceed? (y/N) ')
   rl.close()

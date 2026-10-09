@@ -60,6 +60,10 @@ export default function PublicDashboard() {
         <p className="hero__sub">Celebrations at Shalom</p>
       </header>
 
+      <p className="year-link">
+        <Link to="/calendar">See all celebrations this year →</Link>
+      </p>
+
       {error && <p className="alert alert--error" role="alert">{error}</p>}
 
       {people === null && !error && <p className="loading">Loading…</p>}

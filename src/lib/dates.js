@@ -98,3 +98,40 @@ export function yearForNextOccurrence(day, month, from = new Date()) {
   const next = nextOccurrence(day, month, from)
   return next ? next.getFullYear() : addYears(from, 1).getFullYear()
 }
+
+/**
+ * Every member's celebration falling inside a specific calendar year, sorted
+ * by date. Reuses nextOccurrence from 1 January, so 29 February clamps to
+ * 28 February and impossible dates are skipped, exactly like everything else.
+ */
+export function buildCelebrationsForYear(people, kind, year) {
+  const from = new Date(year, 0, 1)
+  const dayKey = kind === 'birthday' ? 'birth_day' : 'anniversary_day'
+  const monthKey = kind === 'birthday' ? 'birth_month' : 'anniversary_month'
+
+  const out = []
+  for (const person of people) {
+    const day = person[dayKey]
+    const month = person[monthKey]
+    if (!day || !month) continue
+
+    const date = nextOccurrence(day, month, from)
+    if (!date || date.getFullYear() !== year) continue
+
+    out.push({
+      id: person.id,
+      name: person.full_name,
+      kind,
+      date,
+    })
+  }
+
+  return out.sort((a, b) => a.date - b.date || a.name.localeCompare(b.name))
+}
+
+/** Buckets a year's events into 12 month lists (index 0 = January). */
+export function groupByMonth(events) {
+  const months = Array.from({ length: 12 }, () => [])
+  for (const event of events) months[event.date.getMonth()].push(event)
+  return months
+}

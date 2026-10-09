@@ -9,8 +9,10 @@ import assert from 'node:assert/strict'
 
 import {
   buildCelebrations,
+  buildCelebrationsForYear,
   daysUntil,
   formatToday,
+  groupByMonth,
   isToday,
   nextOccurrence,
   partition,
@@ -161,4 +163,45 @@ test('partition does not repeat today inside upcoming', () => {
   const { today, upcoming } = partition(buildCelebrations(people, 'birthday', d('2026-03-15')))
   assert.equal(today.length, 1)
   assert.equal(upcoming.length, 0)
+})
+
+test('buildCelebrationsForYear places every member inside the requested year', () => {
+  const people = [
+    { id: '1', full_name: 'Ada', birth_day: 25, birth_month: 12 },
+    { id: '2', full_name: 'Bob', birth_day: 1, birth_month: 1 },
+  ]
+  const result = buildCelebrationsForYear(people, 'birthday', 2027)
+  assert.deepEqual(
+    result.map((e) => [e.name, e.date.getFullYear(), e.date.getMonth() + 1, e.date.getDate()]),
+    [
+      ['Bob', 2027, 1, 1],
+      ['Ada', 2027, 12, 25],
+    ],
+  )
+})
+
+test('buildCelebrationsForYear clamps 29 February in a non-leap year', () => {
+  const people = [{ id: '1', full_name: 'Leap', birth_day: 29, birth_month: 2 }]
+  const result = buildCelebrationsForYear(people, 'birthday', 2027)
+  assert.equal(result.length, 1)
+  assert.equal(result[0].date.getMonth(), 1)
+  assert.equal(result[0].date.getDate(), 28)
+})
+
+test('buildCelebrationsForYear ignores impossible dates', () => {
+  const people = [{ id: '1', full_name: 'Impossible', birth_day: 31, birth_month: 4 }]
+  assert.equal(buildCelebrationsForYear(people, 'birthday', 2027).length, 0)
+})
+
+test('groupByMonth buckets events by their month', () => {
+  const events = [
+    { id: '1', name: 'Jan', kind: 'birthday', date: d('2026-01-05') },
+    { id: '2', name: 'Dec', kind: 'anniversary', date: d('2026-12-25') },
+    { id: '3', name: 'Jan2', kind: 'birthday', date: d('2026-01-20') },
+  ]
+  const months = groupByMonth(events)
+  assert.equal(months.length, 12)
+  assert.deepEqual(months[0].map((e) => e.name), ['Jan', 'Jan2'])
+  assert.deepEqual(months[11].map((e) => e.name), ['Dec'])
+  assert.equal(months[5].length, 0)
 })

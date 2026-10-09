@@ -249,6 +249,103 @@ h1, h2, h3 { line-height: 1.25; margin: 0; }
   padding: 2rem 1rem;
 }
 
+/* ---------- year calendar ---------- */
+
+.year-link {
+  text-align: center;
+  margin: -1.25rem 0 2.25rem;
+}
+
+.year-link a {
+  display: inline-block;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--accent);
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  text-decoration: none;
+}
+
+.year-link a:hover { border-color: var(--ink-soft); color: var(--ink); }
+
+.hero--compact { padding-bottom: 1.5rem; }
+
+.cal-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.cal-nav__year {
+  font-size: 1.25rem;
+  font-weight: 600;
+  min-width: 6rem;
+  text-align: center;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.month-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.125rem;
+}
+
+.month-card--current {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent), var(--shadow);
+}
+
+.month-card__title {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+  margin-bottom: 0.75rem;
+}
+
+.cal { list-style: none; margin: 0; padding: 0; }
+
+.cal__row {
+  display: grid;
+  grid-template-columns: 2.25rem 1fr auto;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.5rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.cal__row:first-child { border-top: none; padding-top: 0; }
+
+.cal__row--today {
+  background: var(--accent-soft);
+  margin: 0 -0.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  border-radius: 6px;
+  border-top-color: transparent;
+}
+
+.cal__day {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--ink-soft);
+}
+
+.cal__name { font-weight: 500; }
+
 /* ---------- forms ---------- */
 
 .form { display: grid; gap: 1rem; }
