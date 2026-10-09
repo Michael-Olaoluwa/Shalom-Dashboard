@@ -53,7 +53,12 @@ export default function PublicDashboard() {
 
   return (
     <div className="page">
-      <Link to="/admin" className="corner-link">Admin</Link>
+      <header className="topbar">
+        <span className="topbar__brand">Shalom Celebrations</span>
+        <span className="topbar__admin">
+          Are you the admin? <Link to="/admin">Sign in</Link>
+        </span>
+      </header>
 
       <header className="hero">
         <p className="hero__eyebrow">Celebrations at Shalom</p>

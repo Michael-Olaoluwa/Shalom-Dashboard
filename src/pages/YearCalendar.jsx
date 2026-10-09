@@ -83,7 +83,12 @@ export default function YearCalendar() {
 
   return (
     <div className="page">
-      <Link to="/" className="corner-link">Home</Link>
+      <header className="topbar">
+        <Link to="/" className="topbar__brand">Shalom Celebrations</Link>
+        <span className="topbar__admin">
+          Are you the admin? <Link to="/admin">Sign in</Link>
+        </span>
+      </header>
 
       <header className="hero hero--compact">
         <p className="hero__eyebrow">Shalom celebrations</p>

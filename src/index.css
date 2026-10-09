@@ -80,27 +80,38 @@ h1, h2, h3 {
   .columns { grid-template-columns: 1fr; }
 }
 
-.corner-link {
-  position: absolute;
-  top: 1.5rem;
-  right: 1.25rem;
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: var(--ink-soft);
-  text-decoration: none;
-  padding: 0.35rem 0.8rem;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(4px);
-  box-shadow: var(--shadow-sm);
-  transition: color 0.15s ease, border-color 0.15s ease;
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
 }
 
-.corner-link:hover {
-  color: var(--accent);
-  border-color: var(--accent);
+.topbar__brand {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--accent-deep);
+  text-decoration: none;
 }
+
+a.topbar__brand:hover { color: var(--accent-2); }
+
+.topbar__admin {
+  font-size: 0.8125rem;
+  color: var(--ink-soft);
+}
+
+.topbar__admin a {
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.topbar__admin a:hover { text-decoration: underline; }
 
 .page__footer {
   margin-top: 2.75rem;
