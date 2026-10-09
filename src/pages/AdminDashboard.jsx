@@ -11,7 +11,6 @@ import { formatShort } from '../lib/dates'
 import MemberForm from '../components/MemberForm'
 import TopBar from '../components/TopBar'
 import SiteFooter from '../components/SiteFooter'
-import { Link } from 'react-router-dom'
 
 function dateLabel(day, month) {
   if (!day || !month) return '—'
@@ -154,13 +153,18 @@ export default function AdminDashboard() {
 
   return (
     <div className="page">
-      <header className="admin-header">
-        <h1>Admin</h1>
-        <div className="admin-header__actions">
-          <Link to="/" className="back-link">← Back to home</Link>
-          <button className="btn btn--small" onClick={signOut}>Sign out</button>
-        </div>
-      </header>
+      <TopBar
+        backTo="/"
+        backLabel="Home"
+        right={
+          <span className="topbar__admin">
+            Signed in as admin ·{' '}
+            <button className="btn btn--small" onClick={signOut}>Sign out</button>
+          </span>
+        }
+      />
+
+      <h1 className="page-title">Admin</h1>
 
       {notice && <p className="alert alert--ok" role="status">{notice}</p>}
       {loadError && <p className="alert alert--error" role="alert">{loadError}</p>}
