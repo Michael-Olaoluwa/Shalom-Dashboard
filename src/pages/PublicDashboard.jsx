@@ -4,6 +4,7 @@ import { supabase } from '../lib/supabaseClient'
 import { buildCelebrations, formatToday, partition } from '../lib/dates'
 import EventCard from '../components/EventCard'
 import UpcomingList, { NoMembersYet } from '../components/UpcomingList'
+import TopBar from '../components/TopBar'
 
 // The ONLY direct table access in the whole app. `public_celebrations` has no
 // phone column and no non-consented rows, so this is safe to run as `anon`.
@@ -53,12 +54,7 @@ export default function PublicDashboard() {
 
   return (
     <div className="page">
-      <header className="topbar">
-        <span className="topbar__brand">Shalom Celebrations</span>
-        <span className="topbar__admin">
-          Are you the admin? <Link to="/admin">Sign in</Link>
-        </span>
-      </header>
+      <TopBar />
 
       <header className="hero">
         <p className="hero__eyebrow">Celebrations at Shalom</p>

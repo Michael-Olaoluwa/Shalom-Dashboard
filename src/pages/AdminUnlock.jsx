@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { checkAdminCode } from '../lib/api'
 import { useAdminSession } from '../lib/adminSession'
+import TopBar from '../components/TopBar'
 
 export default function AdminUnlock() {
   const { signIn, wasSignedIn } = useAdminSession()
@@ -36,6 +37,7 @@ export default function AdminUnlock() {
 
   return (
     <div className="page page--narrow">
+      <TopBar backTo="/" backLabel="Home" right={null} />
       <div className="card">
         <h1>Admin</h1>
         <p className="muted">

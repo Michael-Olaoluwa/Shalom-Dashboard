@@ -113,6 +113,29 @@ a.topbar__brand:hover { color: var(--accent-2); }
 
 .topbar__admin a:hover { text-decoration: underline; }
 
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  white-space: nowrap;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+
+.back-link:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
 .page__footer {
   margin-top: 2.75rem;
   text-align: center;
@@ -731,8 +754,16 @@ input:disabled, select:disabled, textarea:disabled {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
   margin-bottom: 1.75rem;
   padding: 0.25rem 0;
+}
+
+.admin-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .admin-header h1 {

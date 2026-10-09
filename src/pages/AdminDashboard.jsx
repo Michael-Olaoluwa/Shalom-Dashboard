@@ -9,6 +9,7 @@ import {
 import { useAdminSession } from '../lib/adminSession'
 import { formatShort } from '../lib/dates'
 import MemberForm from '../components/MemberForm'
+import { Link } from 'react-router-dom'
 
 function dateLabel(day, month) {
   if (!day || !month) return '—'
@@ -151,7 +152,10 @@ export default function AdminDashboard() {
     <div className="page">
       <header className="admin-header">
         <h1>Admin</h1>
-        <button className="btn" onClick={signOut}>Sign out</button>
+        <div className="admin-header__actions">
+          <Link to="/" className="back-link">← Back to home</Link>
+          <button className="btn btn--small" onClick={signOut}>Sign out</button>
+        </div>
       </header>
 
       {notice && <p className="alert alert--ok" role="status">{notice}</p>}

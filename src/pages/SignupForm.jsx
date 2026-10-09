@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { submitSignup } from '../lib/api'
 import MemberForm from '../components/MemberForm'
+import TopBar from '../components/TopBar'
 
 export default function SignupForm() {
   const [busy, setBusy] = useState(false)
@@ -28,6 +29,7 @@ export default function SignupForm() {
   if (done) {
     return (
       <div className="page page--narrow">
+        <TopBar backTo="/" backLabel="Home" />
         <div className="card">
           <h1>Thank you</h1>
           <p>Your details have been saved.</p>
@@ -44,6 +46,7 @@ export default function SignupForm() {
 
   return (
     <div className="page page--narrow">
+      <TopBar backTo="/" backLabel="Home" />
       <div className="card">
         <h1>Join / update your info</h1>
         <p className="muted">

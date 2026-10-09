@@ -6,6 +6,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { supabase } from '../lib/supabaseClient'
 import { buildCelebrationsForYear, groupByMonth } from '../lib/dates'
+import TopBar from '../components/TopBar'
 
 const MONTHS = [
   'January', 'February', 'March', 'April', 'May', 'June',
@@ -83,12 +84,7 @@ export default function YearCalendar() {
 
   return (
     <div className="page">
-      <header className="topbar">
-        <Link to="/" className="topbar__brand">Shalom Celebrations</Link>
-        <span className="topbar__admin">
-          Are you the admin? <Link to="/admin">Sign in</Link>
-        </span>
-      </header>
+      <TopBar backTo="/" backLabel="Home" />
 
       <header className="hero hero--compact">
         <p className="hero__eyebrow">Shalom celebrations</p>
