@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { AdminSessionProvider, useAdminSession } from './lib/adminSession'
 import PublicDashboard from './pages/PublicDashboard'
+import LoadingScreen from './components/LoadingScreen'
 
 // The public page is what every visitor loads, so the admin screens are
 // code-split out of the initial bundle. Nothing but the unlock box should cost
@@ -22,6 +23,7 @@ export default function App() {
   return (
     <AdminSessionProvider>
       <Suspense fallback={<p className="page loading">Loading…</p>}>
+        <LoadingScreen />
         <Routes>
           <Route path="/" element={<PublicDashboard />} />
           <Route path="/calendar" element={<YearCalendar />} />
